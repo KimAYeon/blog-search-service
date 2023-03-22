@@ -1,0 +1,4 @@
+rootProject.name = 'blog-search-service'
+include 'api-module'
+include 'core-module'
+
