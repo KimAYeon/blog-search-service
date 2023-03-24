@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ErrorResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-module</a> &gt; <a href="index.source.html" class="el_package">com.zetn333.blogsearchservice.api.common.dto</a> &gt; <span class="el_source">ErrorResponse.java</span></div><h1>ErrorResponse.java</h1><pre class="source lang-java linenums">package com.zetn333.blogsearchservice.api.common.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+<span class="fc" id="L8">@AllArgsConstructor</span>
+@Schema(description = &quot;에러 결과 정보&quot;)
+public class ErrorResponse {
+
+    /* 에러 코드 */
+    @Schema(title = &quot;에러 코드&quot;, description = &quot;정의된 서비스 에러 코드&quot;, implementation = String.class, example = &quot;CMN1N2001&quot;)
+<span class="fc" id="L14">    private String errorCode;</span>
+
+    /* 에러 메세지 */
+    @Schema(title = &quot;에러 메시지&quot;, description = &quot;정의된 서비스 에러 메시지&quot;, implementation = String.class, example = &quot;데이터를 찾을 수 없습니다.&quot;)
+<span class="fc" id="L18">    private String errorMessage;</span>
+
+    public static ErrorResponse of(String code, String message) {
+<span class="fc" id="L21">        return new ErrorResponse(code, message);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

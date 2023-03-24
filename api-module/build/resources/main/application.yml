@@ -1,0 +1,11 @@
+# Profiles
+spring:
+  profiles:
+    default: api
+    group:
+      "api": "api,jpa"
+
+# Server
+server:
+  port: 8081
+

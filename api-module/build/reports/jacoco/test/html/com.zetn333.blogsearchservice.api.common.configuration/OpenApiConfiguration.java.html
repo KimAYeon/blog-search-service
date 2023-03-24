@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OpenApiConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-module</a> &gt; <a href="index.source.html" class="el_package">com.zetn333.blogsearchservice.api.common.configuration</a> &gt; <span class="el_source">OpenApiConfiguration.java</span></div><h1>OpenApiConfiguration.java</h1><pre class="source lang-java linenums">package com.zetn333.blogsearchservice.api.common.configuration;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * API 명세를 위한 Swagger springdoc-ui 설정
+ */
+@Configuration
+<span class="fc" id="L12">public class OpenApiConfiguration {</span>
+
+    @Bean
+    public OpenAPI openAPI() {
+<span class="fc" id="L16">        Info info = new Info()</span>
+<span class="fc" id="L17">                .title(&quot;Blog Search Service API Document&quot;)</span>
+<span class="fc" id="L18">                .version(&quot;v0.1&quot;)</span>
+<span class="fc" id="L19">                .description(&quot;블로그 검색 서비스 프로젝트의 API 명세서입니다.&quot;);</span>
+
+<span class="fc" id="L21">          return new OpenAPI()</span>
+<span class="fc" id="L22">            .info(info);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

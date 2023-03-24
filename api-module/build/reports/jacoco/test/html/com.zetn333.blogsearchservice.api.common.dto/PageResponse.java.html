@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PageResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-module</a> &gt; <a href="index.source.html" class="el_package">com.zetn333.blogsearchservice.api.common.dto</a> &gt; <span class="el_source">PageResponse.java</span></div><h1>PageResponse.java</h1><pre class="source lang-java linenums">package com.zetn333.blogsearchservice.api.common.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+<span class="pc" id="L9">@Builder</span>
+<span class="fc" id="L10">@AllArgsConstructor</span>
+@Schema(title = &quot;페이징 결과 정보&quot;, description = &quot;페이징 결과 정보, 사용된 API에 따라 필드 사용이 상이함.&quot;)
+public class PageResponse {
+
+    /* 페이지 번호 */
+    @Schema(title = &quot;페이지 번호&quot;, description = &quot;조회된 페이지 번호&quot;, implementation = Integer.class)
+<span class="fc" id="L16">    private Integer pageNumber;</span>
+
+    /* 페이지 사이즈 */
+    @Schema(title = &quot;페이지 사이즈&quot;, description = &quot;조회된 페이지 사이즈&quot;, implementation = Integer.class)
+<span class="fc" id="L20">    private Integer pageSize;</span>
+
+    /* 전체 게시글 수 */
+    @Schema(title = &quot;전체 게시글 수&quot;, description = &quot;조회된 전체 게시글 수&quot;, implementation = Integer.class)
+<span class="fc" id="L24">    private Integer totalCount;</span>
+
+    /* 전체 페이지 수 */
+    @Schema(title = &quot;전체 페이지 수&quot;, description = &quot;조회된 전체 페이지 수&quot;, implementation = Integer.class)
+<span class="fc" id="L28">    private Integer totalPageCount;</span>
+
+    /* 노출 가능 게시글 수 */
+    @Schema(title = &quot;노출 가능 게시글 수&quot;, description = &quot;전체 게시글 중에 노출 가능한 게시글 수&quot;, implementation = Integer.class)
+<span class="fc" id="L32">    private Integer pageableCount;</span>
+
+    /* 마지막 페이지 여부 */
+    @Schema(title = &quot;마지막 페이지 여부&quot;, description = &quot;현재 페이지가 마지막 페이지인지 여부&quot;, implementation = Boolean.class)
+<span class="fc" id="L36">    private Boolean isEnd;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
