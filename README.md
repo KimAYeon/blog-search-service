@@ -21,3 +21,5 @@
   
 # 실행 JAR 파일 경로
   - https://drive.google.com/file/d/1rAFgkxpBFh6byM_Z_SdY-CcqhfF1xQKg/view?usp=sharing
+  
+# 소스 코드는 master branch에서 확인 부탁드립니다.
