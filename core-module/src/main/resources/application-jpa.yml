@@ -1,6 +1,12 @@
+# Profiles
 spring:
+  config:
+    activate:
+      on-profile: jpa
+
+# DataBase
   datasource:
-    url: jdbc:h2:mem:blogsearchdb
+    url: jdbc:h2:mem:blogsearchdb;MODE=MYSQL
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -12,12 +18,9 @@ spring:
 
   jpa:
     show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
-
-logging.level:
-  org.hibernate.SQL: debug

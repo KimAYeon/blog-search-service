@@ -1,0 +1,22 @@
+# Profiles
+spring:
+  config:
+    activate:
+      on-profile: api
+
+# REST API
+api:
+  prefix:
+    v1: blog-search-service/apis/v1
+
+# Swagger
+springdoc:
+  version: 'v.0.1'
+  api-docs:
+    path: /api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    path: /api-docs/swagger-ui.html
+    display-operation-id: true
+    tags-sorter: "alpha"

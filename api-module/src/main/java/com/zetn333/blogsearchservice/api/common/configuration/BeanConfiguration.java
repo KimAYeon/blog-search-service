@@ -1,4 +1,4 @@
-package com.zetn333.blogsearchservice.common.configuration;
+package com.zetn333.blogsearchservice.api.common.configuration;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

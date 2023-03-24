@@ -1,41 +1,35 @@
-package com.zetn333.blogsearchservice.common.exception;
+package com.zetn333.blogsearchservice.api.common.exception;
 
-import lombok.AllArgsConstructor;
+import com.zetn333.blogsearchservice.api.common.constansts.ErrorCode;
+import com.zetn333.blogsearchservice.api.common.dto.ErrorResponse;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-
 @Slf4j
-@RestControllerAdvice
 @NoArgsConstructor
-@AllArgsConstructor
+@RestControllerAdvice
 public class ServiceExceptionHandler {
 
-    private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    /**
+     * Error Response 형태로 Response Entity 생성
+     * @param customServiceException
+     * @return ResponseEntity<ErrorResponse>
+     */
+    private ResponseEntity<ErrorResponse> makeResponseEntity(CustomServiceException customServiceException) {
+        final String errorMessage = customServiceException.getMessage();
 
-    private ResponseEntity<ErrorResponse> makeResponseEntity(ServiceException serviceException) {
-
-        final String errorMessage = serviceException.getMessage();
-
-        // 로깅
         if(log.isInfoEnabled())
-            log.info("{}|{}|{}",serviceException.getStatus(), serviceException.getCode(), errorMessage);
+            log.info("{}|{}|{}", customServiceException.getStatus(), customServiceException.getCode(), errorMessage);
 
-        final ErrorResponse response = ErrorResponse.of(serviceException.getCode(), errorMessage);
-        return new ResponseEntity<>(response,HttpStatus.valueOf(serviceException.getStatus()));
-    }
-
-    private String getMessage(ErrorCode errorCode) {
-        return errorCode.getMessage();
+        final ErrorResponse response = ErrorResponse.of(customServiceException.getCode(), errorMessage);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(customServiceException.getStatus()));
     }
 
     /**
@@ -44,12 +38,12 @@ public class ServiceExceptionHandler {
      * @param validException
      * @return
      */
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ErrorResponse> handleValidException( MethodArgumentNotValidException validException) {
+    @ExceptionHandler(BindException.class)
+    protected ResponseEntity<ErrorResponse> handleValidException(BindException validException) {
         log.debug("===== Validation Error : {}", validException.getBindingResult().getAllErrors());
 
         // Default ErrorCode
-        ServiceException serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER);
+        CustomServiceException customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER);
         try {
             // Validation 에 대한 Annotation Code
             ObjectError objectError = validException.getAllErrors().get(0);
@@ -61,20 +55,20 @@ public class ServiceExceptionHandler {
                             objectError.getArguments()[2], // Max
                             objectError.getArguments()[1]}; // Min
 
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_SIZE, sizeArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_SIZE, sizeArgs);
                     break;
 
                 case "Max":
                     Object[] maxArgs = {
                             ((DefaultMessageSourceResolvable)objectError.getArguments()[0]).getDefaultMessage(),
                             objectError.getArguments()[1]}; // Max
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_MAX, maxArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_MAX, maxArgs);
                     break;
                 case "Min":
                     Object[] minArgs = {
                             ((DefaultMessageSourceResolvable)objectError.getArguments()[0]).getDefaultMessage(),
                             objectError.getArguments()[1]}; // Min
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_MIN, minArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_MIN, minArgs);
                     break;
                 case "NotNull":
                 case "NotBlank":
@@ -82,36 +76,36 @@ public class ServiceExceptionHandler {
                     Object[] notEmptyArgs = {
                             ((DefaultMessageSourceResolvable)objectError.getArguments()[0]).getDefaultMessage()};
 
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_NOTEMPTY, notEmptyArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_NOTEMPTY, notEmptyArgs);
                     break;
                 case "Pattern":
                     Object[] patternArgs = {
                             ((DefaultMessageSourceResolvable)objectError.getArguments()[0]).getDefaultMessage(),
                             objectError.getArguments()[1]}; // Min
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_FORMAT, patternArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER_FORMAT, patternArgs);
                     break;
                 default:
                     Object[] defaultArgs = {((DefaultMessageSourceResolvable)objectError.getArguments()[0]).getDefaultMessage()};
-                    serviceException = ServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER, defaultArgs);
+                    customServiceException = CustomServiceException.of(ErrorCode.INVALID_INPUT_PARAMETER, defaultArgs);
                     break;
             }
-        }catch(Exception e) {
+        } catch(Exception e) {
             log.error("INVALID_INPUT_PARAMETER(validException)", validException);
             log.error("INVALID_INPUT_PARAMETER(Exception)", e);
         }
 
-        return makeResponseEntity(serviceException);
+        return makeResponseEntity(customServiceException);
     }
 
     /**
      * API Service에서 발생하는 Service Exception 결과 처리
      *
-     * @param serviceException
+     * @param customServiceException
      * @return
      */
-    @ExceptionHandler(ServiceException.class)
-    protected ResponseEntity<ErrorResponse> handleServiceException( ServiceException serviceException) {
-        return makeResponseEntity(serviceException);
+    @ExceptionHandler(CustomServiceException.class)
+    protected ResponseEntity<ErrorResponse> handleServiceException(CustomServiceException customServiceException) {
+        return makeResponseEntity(customServiceException);
     }
 
     /**
@@ -128,7 +122,7 @@ public class ServiceExceptionHandler {
 
         String errorMessage;
         try {
-            errorMessage = this.getMessage(ErrorCode.INTERNAL_SERVER_ERROR);
+            errorMessage = ErrorCode.INTERNAL_SERVER_ERROR.getMessage();
         }catch(Exception e2) {
             errorMessage = e2.getMessage();
         }

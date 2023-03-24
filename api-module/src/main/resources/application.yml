@@ -1,32 +1,11 @@
+# Profiles
+spring:
+  profiles:
+    default: api
+    group:
+      "api": "api,jpa"
 
-# Server Port
+# Server
 server:
   port: 8081
 
-# Rest API Prefix
-api:
-  prefix: blog-search-service/apis
-
-spring:
-  datasource:
-    url: jdbc:h2:mem:blogsearchdb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format_sql: true
-
-logging.level:
-  org.hibernate.SQL: debug

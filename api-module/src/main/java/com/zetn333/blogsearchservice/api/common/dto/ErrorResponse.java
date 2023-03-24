@@ -1,10 +1,10 @@
-package com.zetn333.blogsearchservice.common.exception;
+package com.zetn333.blogsearchservice.api.common.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 @Schema(description = "에러 결과 정보")
 public class ErrorResponse {

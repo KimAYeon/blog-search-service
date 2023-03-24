@@ -1,15 +1,14 @@
 package com.zetn333.blogsearchservice.api.search.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@Schema(title = "인기 검색 키워드 목록 조회 요청 정보", description = "인기 검색 키워드 목록 조회 요청 정보")
+@Schema(title = "인기 검색 키워드 목록 조회 요청 정보", description = "인기 검색 키워드 목록 조회 요청 정보 - 추후 필요에 따른 확장을 위해 생성")
 public class SelectHotKeywordsRequest {
 
 //    /* 검색어 */

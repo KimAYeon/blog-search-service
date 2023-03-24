@@ -1,4 +1,11 @@
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+ 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.1'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.14'
+	// Vaidation - Parameter 검사
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 }

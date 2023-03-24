@@ -3,16 +3,15 @@ package com.zetn333.blogsearchservice.api.search.dto;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@NoArgsConstructor
 @JsonPropertyOrder({"list"})
 @Schema(description = "인기 검색 키워드 목록 조회 결과 정보")
 public class SelectHotKeywordsResponse {

@@ -1,6 +1,6 @@
 package com.zetn333.blogsearchservice.api.search.controller;
 
-import com.zetn333.blogsearchservice.common.exception.ErrorResponse;
+import com.zetn333.blogsearchservice.api.common.dto.ErrorResponse;
 import com.zetn333.blogsearchservice.api.search.dto.SearchBlogRequest;
 import com.zetn333.blogsearchservice.api.search.dto.SearchBlogResponse;
 import com.zetn333.blogsearchservice.api.search.dto.SelectHotKeywordsRequest;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/${api.prefix}/blog/search")
+@RequestMapping(value = "/${api.prefix.v1}/blog/search")
 @Tag(name = "BlogSearchService", description = "블로그 검색 서비스를 관리하는 API")
 public class BlogSearchRestController {
 

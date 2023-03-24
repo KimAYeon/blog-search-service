@@ -1,5 +1,6 @@
-package com.zetn333.blogsearchservice.common.exception;
+package com.zetn333.blogsearchservice.api.common.exception;
 
+import com.zetn333.blogsearchservice.api.common.constansts.ErrorCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 
 @Slf4j
 @Getter @Setter @ToString
-public class ServiceException extends RuntimeException {
+public class CustomServiceException extends RuntimeException {
 
     private static ApplicationContext context;
     private final int status;
@@ -16,23 +17,23 @@ public class ServiceException extends RuntimeException {
     private final String message;
     private final Object[] args;
 
-    public ServiceException(ErrorCode errorCode) {
+    public CustomServiceException(ErrorCode errorCode) {
         this(errorCode, null);
     }
 
-    public ServiceException(ErrorCode errorCode, Object[] args) {
+    public CustomServiceException(ErrorCode errorCode, Object[] args) {
         this.status = errorCode.getStatus();
         this.code = errorCode.getCode();
         this.args = args;
         this.message = errorCode.getMessage();
     }
 
-    public static ServiceException of(ErrorCode errorCode) {
-        return new ServiceException(errorCode);
+    public static CustomServiceException of(ErrorCode errorCode) {
+        return new CustomServiceException(errorCode);
     }
 
-    public static ServiceException of(ErrorCode errorCode, Object[] args) {
-        return new ServiceException(errorCode, args);
+    public static CustomServiceException of(ErrorCode errorCode, Object[] args) {
+        return new CustomServiceException(errorCode, args);
     }
 
 }

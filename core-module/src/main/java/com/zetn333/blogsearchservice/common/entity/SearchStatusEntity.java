@@ -1,14 +1,12 @@
 package com.zetn333.blogsearchservice.common.entity;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.*;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
-@Getter
+@Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name="SEARCH_STATUS")

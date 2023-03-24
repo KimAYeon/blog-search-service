@@ -3,11 +3,10 @@ package com.zetn333.blogsearchservice.api.common.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data @Builder
-@NoArgsConstructor
+@Getter
+@Builder
 @AllArgsConstructor
 @Schema(title = "페이징 결과 정보", description = "페이징 결과 정보, 사용된 API에 따라 필드 사용이 상이함.")
 public class PageResponse {

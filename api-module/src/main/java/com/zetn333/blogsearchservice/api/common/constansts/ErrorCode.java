@@ -1,4 +1,4 @@
-package com.zetn333.blogsearchservice.common.exception;
+package com.zetn333.blogsearchservice.api.common.constansts;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +22,9 @@ public enum ErrorCode {
      * Backend API 에러 코드 정의
      ################################################################################## */
 
-    // WebClient 서비스
-    INVALID_INPUT_EXTERNAL_API(400, "WCT1N1001", "외부 API 요청 오류 입니다."),
+    // WebClient
+    INVALID_INPUT_OPEN_API(400, "WCT1N1001", "Open API 요청 오류 입니다."),
+    SERVER_ERROR_OPEN_API(500, "WCT1N9999", "Open API 시스템 오류 입니다."),
 
     /** #################################################################################
      * 공통 에러 코드 정의

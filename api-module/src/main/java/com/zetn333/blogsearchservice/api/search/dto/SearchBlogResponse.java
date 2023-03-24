@@ -4,15 +4,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.zetn333.blogsearchservice.api.common.dto.PageResponse;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 @NoArgsConstructor
 @JsonPropertyOrder({"page", "list"})
 @Schema(description = "블로그 검색 결과 정보")

@@ -1,20 +1,16 @@
 package com.zetn333.blogsearchservice.api.search.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Schema(title = "인기 검색 키워드 조회 결과 정보", description = "조회된 인기 검색 키워드 결과 정보")
 public class SelectHotKeywordResponse {
 

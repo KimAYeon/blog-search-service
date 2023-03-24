@@ -1,16 +1,19 @@
 package com.zetn333.blogsearchservice.api.search.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
-@Data
+/**
+ * 카카오 블로그 검색 API 결과 매핑 DTO
+ */
+@Getter
+@Setter
 @NoArgsConstructor
-public class KakaoSearchBlogDto {
+public class KakaoBlogSearchResponseDto {
 
     private Meta meta;
     private List<Document> documents;
