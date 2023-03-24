@@ -20,3 +20,4 @@
   - jacoco : 코드 커버리지 측정 및 보고서 생성 (http://localhost:63342/blog-search-service/blog-search-service.api-module/build/reports/jacoco/test/html/index.html)
   
 # 실행 JAR 파일 경로
+  - https://drive.google.com/file/d/1rAFgkxpBFh6byM_Z_SdY-CcqhfF1xQKg/view?usp=sharing
