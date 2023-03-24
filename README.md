@@ -3,8 +3,9 @@
 # 환경 구성
   - Spring Boot 2.7.9
   - Java 11
-  - JUnit 5
   - H2 innoDB
+  - Spring Data JPA
+  - JUnit 5
 
 # 패키지 구성
   - blog-search-service(root) : 프로젝트 환경 설정 (lombok, test 등)
